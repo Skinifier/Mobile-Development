@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Skinifier</string>
+    <string name="photo">photo</string>
+    <string name="judul">judul</string>
+    <string name="deskripsi">deskripsi</string>
+    <string name="article">Article</string>
+    <string name="article_detail">Article Detail</string>
+    <string name="backbutton">backButton</string>
+    <string name="oily_skin">Oily Skin</string>
+    <string name="dry_skin">Dry Skin</string>
+    <string name="normal_skin">Normal Skin</string>
+    <string name="acne_skin">Acne Skin</string>
+</resources>
