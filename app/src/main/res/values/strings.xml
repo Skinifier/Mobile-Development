@@ -10,4 +10,19 @@
     <string name="dry_skin">Dry Skin</string>
     <string name="normal_skin">Normal Skin</string>
     <string name="acne_skin">Acne Skin</string>
+    <string name="searchbar_hint">What are you looking for?</string>
+    <string name="faceScan">Scan your face</string>
+    <string name="gallery">gallery</string>
+    <string name="add_products">Add Products</string>
+    <string name="foto">Foto:</string>
+    <string name="brand">Brand Name:</string>
+    <string name="brand_name">brand name</string>
+    <string name="product_type">Product Type:</string>
+    <string name="description">Description:</string>
+    <string name="price">Price:</string>
+    <string name="phone_number">Phone Number:</string>
+    <string name="ingredients">Ingredients:</string>
+    <string name="domicile">Domicile:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
