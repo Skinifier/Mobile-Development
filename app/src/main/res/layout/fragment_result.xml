@@ -45,9 +45,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/best_product"
         tools:listitem="@layout/product_row"/>
-
-    </view>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
