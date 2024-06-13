@@ -25,4 +25,14 @@
     <string name="domicile">Domicile:</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signup_successful">Signup Successful</string>
+    <string name="continue_main">Continue</string>
+    <string name="empty_fields_warning">All fields are required</string>
+
+    <string-array name="skin_type">
+        <item>Oily Skin</item>
+        <item>Dry Skin</item>
+        <item>Normal Skin</item>
+        <item>Acne Skin</item>
+    </string-array>
 </resources>

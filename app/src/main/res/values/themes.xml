@@ -8,7 +8,7 @@
 
     <style name="Theme.Skinifier" parent="Base.Theme.Skinifier" />
 
-    <style name="RoundedImageView" parent="Widget.MaterialComponents.ImageView.ShapeableImageView">
+    <style name="RoundedImageView">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>

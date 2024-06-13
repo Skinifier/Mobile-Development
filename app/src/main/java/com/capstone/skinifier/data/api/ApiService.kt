@@ -13,8 +13,8 @@ interface ApiService {
         @Field("email") email: String,
         @Field("username") username: String,
         @Field("fullname") name: String,
-        @Field("no_hp") no_hp: String,
-        @Field("skin_type") skin_type: String,
+        @Field("no_hp") noHp: String,
+        @Field("skin_type") skinType: String,
         @Field("password") password: String
     ): RegisterResponse
 
