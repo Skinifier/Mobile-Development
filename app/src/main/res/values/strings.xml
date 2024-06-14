@@ -28,6 +28,8 @@
     <string name="signup_successful">Signup Successful</string>
     <string name="continue_main">Continue</string>
     <string name="empty_fields_warning">All fields are required</string>
+    <string name="login_successful">Login Successful</string>
+    <string name="welcome_to_skinifier">Welcome to Skinifier</string>
 
     <string-array name="skin_type">
         <item>Oily Skin</item>

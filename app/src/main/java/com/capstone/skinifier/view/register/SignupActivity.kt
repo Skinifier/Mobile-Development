@@ -2,6 +2,7 @@ package com.capstone.skinifier.view.register
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -20,80 +21,78 @@ class SignupActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySignupBinding
     private lateinit var myButtonLogin: MyButtonOutline
     private val signupViewModel: SignupViewModel by viewModels { ViewModelFactory.getInstance(this) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //buat dropdown
+        // Set up the dropdown
         val skinType = resources.getStringArray(R.array.skin_type)
         val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, skinType)
         binding.skinTypeField.setAdapter(arrayAdapter)
 
-        observeViewModel()
         setupAction()
     }
-    private fun setupAction() {
 
-        //intent loginAct
+    private fun setupAction() {
+        // Intent to login activity
         myButtonLogin = binding.loginButton
         myButtonLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
-
-        //action signup
         binding.signupButton.setOnClickListener {
-            val email = binding.emailField.text.toString()
-            val username = binding.usernameField.text.toString()
-            val name = binding.fullnameField.text.toString()
-            val number = binding.numberField.text.toString()
-            val skinTypes = binding.skinTypeField.text.toString()
-            val password = binding.passwordField.text.toString()
-            if (email.isEmpty() || username.isEmpty() || name.isEmpty() || number.isEmpty() || skinTypes.isEmpty() || password.isEmpty()) {
-                showToast(getString(R.string.empty_fields_warning))
+//            val email = binding.emailField.text.toString()
+//            val username = binding.usernameField.text.toString()
+//            val fullname = binding.fullnameField.text.toString()
+//            val number = binding.numberField.text.toString()
+//            val skinType = binding.skinTypeField.text.toString()
+//            val password = binding.passwordField.text.toString()
+
+            val email = "tesregis22@gmail.com"
+            val username = "testestestestes"
+            val fullname = "testestestestes"
+            val number = "123123123123"
+            val skinType = "Oily"
+            val password = "123123123123"
+
+            Log.d("SignupActivity", "email: $email, username: $username, name: $fullname, number: $number, skinType: $skinType, password: $password")
+
+
+            if (email.isNotEmpty() && username.isNotEmpty() && fullname.isNotEmpty() && number.isNotEmpty() && skinType.isNotEmpty() && password.isNotEmpty()) {
+                signupViewModel.register(email, username, fullname, number, skinType, password)
             } else {
-                signupViewModel.register(email, username, name, number, skinTypes, password)
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             }
         }
 
-    }
-
-    private fun observeViewModel() {
         signupViewModel.registerResult.observe(this) { result ->
             when (result) {
-                is ResultState.Loading -> {
-                    binding.progressIndicator.visibility = View.VISIBLE
-                }
                 is ResultState.Success -> {
-                    binding.progressIndicator.visibility = View.GONE
-                    AlertDialog.Builder(this).apply {
-                        setTitle(getString(R.string.signup_successful))
-                        setMessage(result.data)
-                        setPositiveButton(getString(R.string.continue_main)) { _, _ ->
-                            val intent = Intent(context, LoginActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent)
-                            finish()
-                        }
-                        create()
-                        show()
-                    }
+                    Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
                 }
                 is ResultState.Error -> {
-
-                    binding.progressIndicator.visibility = View.GONE
-                    AlertDialog.Builder(this).apply {
-                        setTitle("Error")
-                        setMessage("Login failed: ${result.error}")
-                        setPositiveButton("OK", null)
-                        create()
-                        show()
-                    }
+                    Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()
+                }
+                is ResultState.Loading -> {
                 }
             }
         }
+
+//        binding.signupButton.setOnClickListener {
+////            val name = binding.nameEditText.text.toString()
+////            val email = binding.emailEditText.text.toString()
+////            val password = binding.passwordEditText.text.toString()
+//            val name = "testestestestes"
+//            val email = "testesresres@gmail.com"
+//            val password = "123123123123"
+//
+//            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+//                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+//            } else {
+//                signupViewModel.register(name, email, password)
+//            }
+//        } hasil {"error":false,"message":"User created"}
     }
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
+
 }

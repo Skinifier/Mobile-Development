@@ -12,11 +12,20 @@ interface ApiService {
     suspend fun register(
         @Field("email") email: String,
         @Field("username") username: String,
-        @Field("fullname") name: String,
-        @Field("no_hp") noHp: String,
-        @Field("skin_type") skinType: String,
+        @Field("fullname") fullname: String,
+        @Field("no_hp") no_hp: String,
+        @Field("skin_type") skin_type: String,
         @Field("password") password: String
     ): RegisterResponse
+
+    //tes api story
+//    @FormUrlEncoded
+//    @POST("register")
+//    suspend fun register(
+//        @Field("name") name: String,
+//        @Field("email") email: String,
+//        @Field("password") password: String
+//    ): RegisterResponse
 
     @FormUrlEncoded
     @POST("login")

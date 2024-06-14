@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.capstone.skinifier.data.api.ApiService
 import com.capstone.skinifier.data.pref.UserModel
 import com.capstone.skinifier.data.pref.UserPreference
+import com.capstone.skinifier.data.response.RegisterResponse
 import com.capstone.skinifier.di.ResultState
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
@@ -15,6 +16,16 @@ class UserRepository private constructor(
     val apiService: ApiService,
     private val userPreference: UserPreference,
 ) {
+
+    suspend fun register(email: String, username: String, fullname: String, number: String, skinType: String, password: String): RegisterResponse {
+        return apiService.register(email, username, fullname, number, skinType, password)
+    }
+//    tes story
+//    suspend fun register(name: String, email: String, password: String): RegisterResponse {
+//        return apiService.register(name, email, password)
+//    }
+
+
 
     fun getSession(): Flow<UserModel> {
         return userPreference.getSession()
