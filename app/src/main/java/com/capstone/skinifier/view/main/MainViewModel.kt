@@ -11,9 +11,6 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: UserRepository) : ViewModel() {
 
-    private val _errorMessage = MutableLiveData<String?>()
-    val errorMessage: LiveData<String?> = _errorMessage
-
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }

@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.skinifier.R
@@ -24,24 +25,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        var keepSplashScreen = true
+        installSplashScreen().setKeepOnScreenCondition { keepSplashScreen }
+
         setContentView(binding.root)
 
-        //ini jangan diubah, buat check session
+        //check session
         mainViewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
-        }
-        mainViewModel.errorMessage.observe(this) { errorMessage ->
-            errorMessage?.let {
-                Toast.makeText(this, it+ getString(R.string.loginAgain), Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
+            keepSplashScreen = false
         }
 
-        //ubah darisini
         setupAction()
     }
 
