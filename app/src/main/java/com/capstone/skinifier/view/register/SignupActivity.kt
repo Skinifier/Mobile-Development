@@ -41,23 +41,53 @@ class SignupActivity : AppCompatActivity() {
         myButtonLogin.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
+//        binding.signupButton.setOnClickListener {
+////            val email = binding.emailField.text.toString()
+////            val username = binding.usernameField.text.toString()
+////            val fullname = binding.fullnameField.text.toString()
+////            val number = binding.numberField.text.toString()
+////            val skinType = binding.skinTypeField.text.toString()
+////            val password = binding.passwordField.text.toString()
+//
+//            val email = "tesregis22@gmail.com"
+//            val username = "testestestestes"
+//            val fullname = "testestestestes"
+//            val number = "123123123123"
+//            val skinType = "Oily"
+//            val password = "123123123123"
+//
+//            Log.d("SignupActivity", "email: $email, username: $username, name: $fullname, number: $number, skinType: $skinType, password: $password")
+//
+//
+//            if (email.isNotEmpty() && username.isNotEmpty() && fullname.isNotEmpty() && number.isNotEmpty() && skinType.isNotEmpty() && password.isNotEmpty()) {
+//                signupViewModel.register(email, username, fullname, number, skinType, password)
+//            } else {
+//                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//
+//        signupViewModel.registerResult.observe(this) { result ->
+//            when (result) {
+//                is ResultState.Success -> {
+//                    Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
+//                }
+//                is ResultState.Error -> {
+//                    Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()
+//                }
+//                is ResultState.Loading -> {
+//                }
+//            }
+//        }
         binding.signupButton.setOnClickListener {
-//            val email = binding.emailField.text.toString()
-//            val username = binding.usernameField.text.toString()
-//            val fullname = binding.fullnameField.text.toString()
-//            val number = binding.numberField.text.toString()
-//            val skinType = binding.skinTypeField.text.toString()
-//            val password = binding.passwordField.text.toString()
 
-            val email = "tesregis22@gmail.com"
-            val username = "testestestestes"
-            val fullname = "testestestestes"
-            val number = "123123123123"
-            val skinType = "Oily"
-            val password = "123123123123"
+            val email = binding.emailField.text.toString()
+            val username = binding.usernameField.text.toString()
+            val fullname = binding.fullnameField.text.toString()
+            val number = binding.numberField.text.toString()
+            val skinType = binding.skinTypeField.text.toString()
+            val password = binding.passwordField.text.toString()
 
             Log.d("SignupActivity", "email: $email, username: $username, name: $fullname, number: $number, skinType: $skinType, password: $password")
-
 
             if (email.isNotEmpty() && username.isNotEmpty() && fullname.isNotEmpty() && number.isNotEmpty() && skinType.isNotEmpty() && password.isNotEmpty()) {
                 signupViewModel.register(email, username, fullname, number, skinType, password)
@@ -79,20 +109,6 @@ class SignupActivity : AppCompatActivity() {
             }
         }
 
-//        binding.signupButton.setOnClickListener {
-////            val name = binding.nameEditText.text.toString()
-////            val email = binding.emailEditText.text.toString()
-////            val password = binding.passwordEditText.text.toString()
-//            val name = "testestestestes"
-//            val email = "testesresres@gmail.com"
-//            val password = "123123123123"
-//
-//            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-//                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
-//            } else {
-//                signupViewModel.register(name, email, password)
-//            }
-//        } hasil {"error":false,"message":"User created"}
     }
 
 }

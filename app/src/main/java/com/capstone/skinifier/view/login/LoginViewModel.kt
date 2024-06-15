@@ -22,39 +22,22 @@ class LoginViewModel(private val repository: AuthUserRepository) : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-//    private val _loginResult = MutableLiveData<Result<LoginResponse>>()
-//    val loginResult: LiveData<Result<LoginResponse>> = _loginResult
-//
-//    fun login(email: String, password: String) {
-//        _isLoading.value = true
-//        viewModelScope.launch {
-//            try {
-//                val response = repository.login(email, password)
-//                saveSession(UserModel(email, response.token))
-//                _loginResult.value = Result.success(response)
-//            } catch (e: HttpException) {
-//                _loginResult.value = Result.failure(e)
-//            } catch (e: Exception) {
-//                _loginResult.value = Result.failure(e)
-//            } finally {
-//                _isLoading.value = false
-//            }
-//        }
-//    }
+//    private val _loginResult = MutableLiveData<ResultState<LoginResponse>>()
+//    val loginResult: LiveData<ResultState<LoginResponse>> = _loginResult
 
-    private val _loginResult = MutableLiveData<ResultState<LoginResponse>>()
-    val loginResult: LiveData<ResultState<LoginResponse>> = _loginResult
+    private val _loginResult = MutableLiveData<ResultState<String>>()
+    val loginResult: LiveData<ResultState<String>> = _loginResult
 
     fun login(email: String, password: String) {
         _loginResult.value = ResultState.Loading
         viewModelScope.launch {
             try {
                 val response = repository.login(email, password)
-                _loginResult.value = ResultState.Success(response)
-            } catch (e: HttpException) {
-                _loginResult.value = ResultState.Error(e.message ?: "An error occurred")
+                val user = UserModel(email, response.token, true)
+                repository.saveSession(user)
+                _loginResult.value = ResultState.Success("Login successful")
             } catch (e: Exception) {
-                _loginResult.value = ResultState.Error(e.message ?: "An error occurred")
+                _loginResult.value = ResultState.Error(e.message.toString())
             }
         }
     }

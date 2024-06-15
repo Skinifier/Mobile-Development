@@ -2,35 +2,34 @@ package com.capstone.skinifier.data.api
 
 import com.capstone.skinifier.data.response.LoginResponse
 import com.capstone.skinifier.data.response.RegisterResponse
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
+
+data class RegisterRequest(
+    val email: String,
+    val username: String,
+    val fullname: String,
+    val no_hp: String,
+    val skin_type: String,
+    val password: String
+)
+
+data class LoginRequest(
+    val email: String,
+    val password: String
+)
+
 interface ApiService {
-    @FormUrlEncoded
     @POST("register")
     suspend fun register(
-        @Field("email") email: String,
-        @Field("username") username: String,
-        @Field("fullname") fullname: String,
-        @Field("no_hp") no_hp: String,
-        @Field("skin_type") skin_type: String,
-        @Field("password") password: String
+        @Body registerRequest: RegisterRequest
     ): RegisterResponse
 
-    //tes api story
-//    @FormUrlEncoded
-//    @POST("register")
-//    suspend fun register(
-//        @Field("name") name: String,
-//        @Field("email") email: String,
-//        @Field("password") password: String
-//    ): RegisterResponse
-
-    @FormUrlEncoded
     @POST("login")
     suspend fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body loginRequest: LoginRequest
     ): LoginResponse
 }

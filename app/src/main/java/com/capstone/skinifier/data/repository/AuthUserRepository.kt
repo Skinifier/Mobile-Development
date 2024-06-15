@@ -1,6 +1,7 @@
 package com.capstone.skinifier.data.repository
 
 import com.capstone.skinifier.data.api.ApiService
+import com.capstone.skinifier.data.api.LoginRequest
 import com.capstone.skinifier.data.pref.UserModel
 import com.capstone.skinifier.data.pref.UserPreference
 import com.capstone.skinifier.data.response.LoginResponse
@@ -11,7 +12,8 @@ class AuthUserRepository private constructor(
 ) {
 
     suspend fun login(email: String, password: String): LoginResponse {
-        return apiService.login(email, password)
+        val loginRequest = LoginRequest(email, password)
+        return apiService.login(loginRequest)
     }
 
     suspend fun saveSession(user: UserModel) {

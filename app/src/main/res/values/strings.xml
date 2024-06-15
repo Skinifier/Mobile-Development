@@ -30,6 +30,12 @@
     <string name="empty_fields_warning">All fields are required</string>
     <string name="login_successful">Login Successful</string>
     <string name="welcome_to_skinifier">Welcome to Skinifier</string>
+    <string name="loginAgain">Please Login Again</string>
+
+    <string name="logout_confirmation">Logout Confirmation</string>
+    <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 
     <string-array name="skin_type">
         <item>Oily Skin</item>

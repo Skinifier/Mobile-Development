@@ -2,6 +2,7 @@ package com.capstone.skinifier.data.repository
 
 import androidx.lifecycle.LiveData
 import com.capstone.skinifier.data.api.ApiService
+import com.capstone.skinifier.data.api.RegisterRequest
 import com.capstone.skinifier.data.pref.UserModel
 import com.capstone.skinifier.data.pref.UserPreference
 import com.capstone.skinifier.data.response.RegisterResponse
@@ -17,13 +18,18 @@ class UserRepository private constructor(
     private val userPreference: UserPreference,
 ) {
 
-    suspend fun register(email: String, username: String, fullname: String, number: String, skinType: String, password: String): RegisterResponse {
-        return apiService.register(email, username, fullname, number, skinType, password)
-    }
+//    suspend fun register(email: String, username: String, fullname: String, number: String, skinType: String, password: String): RegisterResponse {
+//        return apiService.register(email, username, fullname, number, skinType, password)
+//    }
 //    tes story
 //    suspend fun register(name: String, email: String, password: String): RegisterResponse {
 //        return apiService.register(name, email, password)
 //    }
+
+    suspend fun register(email: String, username: String, fullname: String, number: String, skinType: String, password: String): RegisterResponse {
+        val registerRequest = RegisterRequest(email, username, fullname, number, skinType, password)
+        return apiService.register(registerRequest)
+    }
 
 
 
