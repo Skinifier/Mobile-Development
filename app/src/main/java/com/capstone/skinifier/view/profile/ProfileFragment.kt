@@ -1,15 +1,19 @@
 package com.capstone.skinifier.view.profile
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.skinifier.R
+import com.capstone.skinifier.view.login.LoginActivity
 import com.capstone.skinifier.view.viewModelFactory.ViewModelFactory
 
 class ProfileFragment : Fragment() {
@@ -39,8 +43,48 @@ class ProfileFragment : Fragment() {
             noHp.text = profile.noHp
         }
 
+        profileViewModel.navigateToLogin.observe(viewLifecycleOwner) { navigate ->
+            if (navigate) {
+                navigateToLogin()
+                profileViewModel.navigationComplete()
+            }
+        }
+
         profileViewModel.fetchProfile()
 
         return view
+    }
+
+    private fun navigateToLogin() {
+        val intent = Intent(requireContext(), LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        requireActivity().finish() // Optional: Finish current activity to prevent user from navigating back
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupAction()
+    }
+
+    private fun setupAction() {
+        view?.findViewById<Button>(R.id.logoutButton)?.setOnClickListener {
+            showLogoutConfirmationDialog()
+        }
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        context?.let {
+            AlertDialog.Builder(it)
+                .setTitle(getString(R.string.logout_confirmation))
+                .setMessage(getString(R.string.are_you_sure_you_want_to_logout))
+                .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                    profileViewModel.logout()
+                }
+                .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        }
     }
 }
