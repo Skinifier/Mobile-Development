@@ -7,4 +7,8 @@
 
     <style name="MyCustomButtonStyle" parent="Widget.AppCompat.Button.Borderless">
     </style>
+
+    <style name="ShapeAppearanceOverlay.Profile" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%p</item> </style>
 </resources>

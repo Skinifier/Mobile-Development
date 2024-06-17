@@ -15,6 +15,10 @@
         android:theme="@style/Theme.Skinifier"
         tools:targetApi="31">
         <activity
+            android:name=".view.home.NavigationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_navigation" />
+        <activity
             android:name=".view.register.SignupActivity"
             android:exported="false" />
         <activity

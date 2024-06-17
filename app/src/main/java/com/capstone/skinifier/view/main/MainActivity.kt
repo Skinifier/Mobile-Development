@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.skinifier.R
 import com.capstone.skinifier.databinding.ActivityMainBinding
+import com.capstone.skinifier.view.home.NavigationActivity
 import com.capstone.skinifier.view.login.LoginActivity
 import com.capstone.skinifier.view.register.SignupActivity
 import com.capstone.skinifier.view.viewModelFactory.ViewModelFactory
@@ -32,7 +33,10 @@ class MainActivity : AppCompatActivity() {
 
         //check session
         mainViewModel.getSession().observe(this) { user ->
-            if (!user.isLogin) {
+            if (user.isLogin) {
+                startActivity(Intent(this, NavigationActivity::class.java))
+                finish()
+            } else {
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }

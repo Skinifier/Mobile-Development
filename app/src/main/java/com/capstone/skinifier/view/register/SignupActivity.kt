@@ -31,7 +31,7 @@ class SignupActivity : AppCompatActivity() {
         val skinType = resources.getStringArray(R.array.skin_type)
         val arrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, skinType)
         binding.skinTypeField.setAdapter(arrayAdapter)
-
+        supportActionBar?.hide()
         setupAction()
     }
 

@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.skinifier.data.repository.UserRepository
 import com.capstone.skinifier.di.Injection
 import com.capstone.skinifier.view.main.MainViewModel
+import com.capstone.skinifier.view.profile.ProfileViewModel
 import com.capstone.skinifier.view.register.SignupViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
@@ -19,11 +20,14 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(repository) as T
+            }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
 
     companion object {
-        fun getInstance(context: Context)= ViewModelFactory(Injection.provideRepository(context))
+        fun getInstance(context: Context) = ViewModelFactory(Injection.provideRepository(context))
     }
 }

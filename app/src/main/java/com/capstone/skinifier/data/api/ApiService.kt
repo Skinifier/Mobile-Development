@@ -1,10 +1,13 @@
 package com.capstone.skinifier.data.api
 
 import com.capstone.skinifier.data.response.LoginResponse
+import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 
@@ -32,4 +35,7 @@ interface ApiService {
     suspend fun login(
         @Body loginRequest: LoginRequest
     ): LoginResponse
+
+    @GET("users")
+    suspend fun getProfile(): ProfileResponse
 }

@@ -5,6 +5,7 @@ import com.capstone.skinifier.data.api.ApiService
 import com.capstone.skinifier.data.api.RegisterRequest
 import com.capstone.skinifier.data.pref.UserModel
 import com.capstone.skinifier.data.pref.UserPreference
+import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
 import com.capstone.skinifier.di.ResultState
 import com.google.gson.Gson
@@ -18,13 +19,7 @@ class UserRepository private constructor(
     private val userPreference: UserPreference,
 ) {
 
-//    suspend fun register(email: String, username: String, fullname: String, number: String, skinType: String, password: String): RegisterResponse {
-//        return apiService.register(email, username, fullname, number, skinType, password)
-//    }
-//    tes story
-//    suspend fun register(name: String, email: String, password: String): RegisterResponse {
-//        return apiService.register(name, email, password)
-//    }
+
 
     suspend fun register(email: String, username: String, fullname: String, number: String, skinType: String, password: String): RegisterResponse {
         val registerRequest = RegisterRequest(email, username, fullname, number, skinType, password)
@@ -41,82 +36,9 @@ class UserRepository private constructor(
         userPreference.logout()
     }
 
-//    suspend fun getStories(): Result<StoryResponse> {
-//        return try {
-//            val response = apiService.getStories()
-//            Result.success(response)
-//        } catch (e: HttpException) {
-//            Result.failure(e)
-//        } catch (e: IOException) {
-//            Result.failure(e)
-//        }
-//    }
-//
-//    fun getStories(): LiveData<PagingData<ListStoryItem>> {
-//        return Pager(
-//            config = PagingConfig(
-//                pageSize = 5,
-//            ),
-//            pagingSourceFactory = {
-//                PagingSource(apiService)
-//            }
-//        ).liveData
-//    }
-//
-//    suspend fun getStoriesWithLocation(): Result<StoryResponse> {
-//        return try {
-//            val response = apiService.getStoriesWithLocation()
-//            Result.success(response)
-//        } catch (e: HttpException) {
-//            Result.failure(e)
-//        } catch (e: IOException) {
-//            Result.failure(e)
-//        }
-//    }
-//
-//    suspend fun getStoryDetail(id: String): DetailResponse {
-//        return apiService.getStoryDetail(id)
-//    }
-//
-//    fun uploadImage(imageFile: File, description: String) = liveData {
-//        emit(ResultState.Loading)
-//        val requestBody = description.toRequestBody("text/plain".toMediaType())
-//        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
-//        val multipartBody = MultipartBody.Part.createFormData(
-//            "photo",
-//            imageFile.name,
-//            requestImageFile
-//        )
-//        try {
-//            val successResponse = apiService.uploadImage(multipartBody, requestBody)
-//            emit(ResultState.Success(successResponse))
-//        } catch (e: HttpException) {
-//            val errorBody = e.response()?.errorBody()?.string()
-//            val errorResponse = Gson().fromJson(errorBody, UploadResponse::class.java)
-//            emit(ResultState.Error(errorResponse.message))
-//        }
-//
-//    }
-//
-//    fun guestUploadImage(imageFile: File, description: String) = liveData {
-//        emit(ResultState.Loading)
-//        val requestBody = description.toRequestBody("text/plain".toMediaType())
-//        val requestImageFile = imageFile.asRequestBody("image/jpeg".toMediaType())
-//        val multipartBody = MultipartBody.Part.createFormData(
-//            "photo",
-//            imageFile.name,
-//            requestImageFile
-//        )
-//        try {
-//            val successResponse = apiService.guestUploadImage(multipartBody, requestBody)
-//            emit(ResultState.Success(successResponse))
-//        } catch (e: HttpException) {
-//            val errorBody = e.response()?.errorBody()?.string()
-//            val errorResponse = Gson().fromJson(errorBody, UploadResponse::class.java)
-//            emit(ResultState.Error(errorResponse.message))
-//        }
-//
-//    }
+    suspend fun getProfile(): ProfileResponse {
+        return apiService.getProfile()
+    }
 
 
     companion object {
