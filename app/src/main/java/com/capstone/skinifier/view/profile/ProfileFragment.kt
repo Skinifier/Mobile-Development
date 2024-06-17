@@ -10,11 +10,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.skinifier.R
 import com.capstone.skinifier.view.login.LoginActivity
+import com.capstone.skinifier.view.soldProduct.SoldProductActivity
 import com.capstone.skinifier.view.viewModelFactory.ViewModelFactory
+import com.capstone.skinifier.view.wishlist.WishlistActivity
 
 class ProfileFragment : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel
@@ -59,7 +62,7 @@ class ProfileFragment : Fragment() {
         val intent = Intent(requireContext(), LoginActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        requireActivity().finish() // Optional: Finish current activity to prevent user from navigating back
+        requireActivity().finish()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,6 +73,14 @@ class ProfileFragment : Fragment() {
     private fun setupAction() {
         view?.findViewById<Button>(R.id.logoutButton)?.setOnClickListener {
             showLogoutConfirmationDialog()
+        }
+        view?.findViewById<CardView>(R.id.cardWishtlist)?.setOnClickListener {
+            val intent = Intent(requireContext(), WishlistActivity::class.java)
+            startActivity(intent)
+        }
+        view?.findViewById<CardView>(R.id.cardSoldProduct)?.setOnClickListener {
+            val intent = Intent(requireContext(), SoldProductActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -5,8 +5,11 @@ import com.capstone.skinifier.data.api.ApiService
 import com.capstone.skinifier.data.api.RegisterRequest
 import com.capstone.skinifier.data.pref.UserModel
 import com.capstone.skinifier.data.pref.UserPreference
+import com.capstone.skinifier.data.response.DetailBarangResponse
+import com.capstone.skinifier.data.response.GetWishlistResponseItem
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
+import com.capstone.skinifier.data.response.SoldProductResponseItem
 import com.capstone.skinifier.di.ResultState
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +18,7 @@ import okhttp3.MultipartBody
 import java.io.File
 
 class UserRepository private constructor(
-    val apiService: ApiService,
+    private val apiService: ApiService,
     private val userPreference: UserPreference,
 ) {
 
@@ -38,6 +41,18 @@ class UserRepository private constructor(
 
     suspend fun getProfile(): ProfileResponse {
         return apiService.getProfile()
+    }
+
+    suspend fun getWishlist(): List<GetWishlistResponseItem> {
+        return apiService.getWishlist()
+    }
+
+    suspend fun getItemDetail(idBarang: String): DetailBarangResponse {
+        return apiService.getItemDetail(idBarang)
+    }
+
+    suspend fun getSoldProducts(): List<SoldProductResponseItem> {
+        return apiService.getSoldProduct()
     }
 
 

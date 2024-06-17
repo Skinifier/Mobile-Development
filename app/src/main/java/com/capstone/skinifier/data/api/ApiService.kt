@@ -1,14 +1,18 @@
 package com.capstone.skinifier.data.api
 
+import com.capstone.skinifier.data.response.DetailBarangResponse
+import com.capstone.skinifier.data.response.GetWishlistResponseItem
 import com.capstone.skinifier.data.response.LoginResponse
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
+import com.capstone.skinifier.data.response.SoldProductResponseItem
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 
 data class RegisterRequest(
@@ -38,4 +42,15 @@ interface ApiService {
 
     @GET("users")
     suspend fun getProfile(): ProfileResponse
+
+    @GET("wishlist")
+    suspend fun getWishlist(): List<GetWishlistResponseItem>
+
+    @GET("barang/{id_barang}")
+    suspend fun getItemDetail(
+        @Path("id_barang") idBarang: String
+    ): DetailBarangResponse
+
+    @GET("barang/users")
+    suspend fun getSoldProduct(): List<SoldProductResponseItem>
 }

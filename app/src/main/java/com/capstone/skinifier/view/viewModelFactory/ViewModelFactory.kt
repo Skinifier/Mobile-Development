@@ -8,6 +8,8 @@ import com.capstone.skinifier.di.Injection
 import com.capstone.skinifier.view.main.MainViewModel
 import com.capstone.skinifier.view.profile.ProfileViewModel
 import com.capstone.skinifier.view.register.SignupViewModel
+import com.capstone.skinifier.view.soldProduct.SoldProductViewModel
+import com.capstone.skinifier.view.wishlist.WishlistViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -22,6 +24,12 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(WishlistViewModel::class.java) -> {
+                WishlistViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SoldProductViewModel::class.java) -> {
+                SoldProductViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

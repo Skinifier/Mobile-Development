@@ -33,11 +33,10 @@ class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
     fun logout() {
         viewModelScope.launch {
             repository.logout()
-            _navigateToLogin.value = true  // Trigger navigation event
+            _navigateToLogin.value = true
         }
     }
 
-    // Call this function when navigation is completed
     fun navigationComplete() {
         _navigateToLogin.value = false
     }
