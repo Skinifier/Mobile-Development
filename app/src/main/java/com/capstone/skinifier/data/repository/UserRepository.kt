@@ -1,6 +1,5 @@
 package com.capstone.skinifier.data.repository
 
-import androidx.lifecycle.LiveData
 import com.capstone.skinifier.data.api.ApiService
 import com.capstone.skinifier.data.api.RegisterRequest
 import com.capstone.skinifier.data.pref.ProfileData
@@ -12,12 +11,10 @@ import com.capstone.skinifier.data.response.GetWishlistResponseItem
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
 import com.capstone.skinifier.data.response.SoldProductResponseItem
-import com.capstone.skinifier.di.ResultState
-import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
-import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import java.io.File
+import okhttp3.RequestBody.Companion.asRequestBody
 
 class UserRepository private constructor(
     private val apiService: ApiService,
@@ -57,18 +54,38 @@ class UserRepository private constructor(
         return apiService.getSoldProduct()
     }
 
+
+//    suspend fun updateProfile(profileData: ProfileData): EditProfileResponse {
+//        val formData = MultipartBody.Builder()
+//            .setType(MultipartBody.FORM)
+//            .addFormDataPart("email", profileData.email)
+//            .addFormDataPart("username", profileData.username)
+//            .addFormDataPart("fullname", profileData.fullname)
+//            .addFormDataPart("no_hp", profileData.noHp)
+//            .addFormDataPart("skin_type", profileData.skinType)
+//            .build()
+//
+//        return apiService.updateProfile(formData)
+//    }
+
     suspend fun updateProfile(profileData: ProfileData): EditProfileResponse {
-        val formData = MultipartBody.Builder()
+        val formDataBuilder = MultipartBody.Builder()
             .setType(MultipartBody.FORM)
             .addFormDataPart("email", profileData.email)
             .addFormDataPart("username", profileData.username)
             .addFormDataPart("fullname", profileData.fullname)
             .addFormDataPart("no_hp", profileData.noHp)
             .addFormDataPart("skin_type", profileData.skinType)
-            .build()
 
+        profileData.foto?.let { file ->
+            val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            formDataBuilder.addFormDataPart("foto", file.name, requestFile)
+        }
+
+        val formData = formDataBuilder.build()
         return apiService.updateProfile(formData)
     }
+
 
 
     companion object {

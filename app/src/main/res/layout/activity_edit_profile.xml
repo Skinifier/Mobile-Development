@@ -13,6 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="25dp"
@@ -75,7 +85,7 @@
                     />
 
                 <FrameLayout
-                    android:id="@+id/frame"
+                    android:id="@+id/fl_frame"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:layout_marginTop="8dp"
@@ -111,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/frame"
+                    app:layout_constraintTop_toBottomOf="@id/fl_frame"
                     app:layout_constraintStart_toStartOf="parent"
                     android:text="Email:"
                     android:fontFamily="@font/poppins_medium"

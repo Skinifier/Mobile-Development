@@ -8,6 +8,7 @@ import com.capstone.skinifier.data.pref.ProfileData
 import com.capstone.skinifier.data.repository.UserRepository
 import com.capstone.skinifier.data.response.ProfileResponse
 import kotlinx.coroutines.launch
+import java.io.File
 
 class EditProfileViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _profileData = MutableLiveData<ProfileResponse>()
@@ -24,6 +25,9 @@ class EditProfileViewModel(private val userRepository: UserRepository) : ViewMod
         }
     }
 
+    private val _updateProfileResult = MutableLiveData<String>()
+    val updateProfileResult: LiveData<String> = _updateProfileResult
+
     fun updateProfile(profileData: ProfileData) {
         viewModelScope.launch {
             try {
@@ -36,6 +40,7 @@ class EditProfileViewModel(private val userRepository: UserRepository) : ViewMod
             }
         }
     }
+
 
     private val _navigateBackToProfileFragment = MutableLiveData<Boolean>()
     val navigateBackToProfileFragment: LiveData<Boolean> = _navigateBackToProfileFragment

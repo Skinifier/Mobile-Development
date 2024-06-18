@@ -68,4 +68,9 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.9.0")
 
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    val cameraxVersion = "1.3.4"
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
 }
