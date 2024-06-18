@@ -37,6 +37,11 @@ class SoldProductActivity : AppCompatActivity() {
             }
         })
 
+        binding.backButton.setOnClickListener {
+            @Suppress("DEPRECATION")
+            onBackPressed()
+        }
+
         soldProductViewModel.fetchSoldProducts()
     }
 }

@@ -9,7 +9,7 @@
     android:background="@color/myBackgroundColor">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/backButton"
         android:layout_width="25dp"
         android:layout_height="27dp"
         android:layout_marginStart="16dp"

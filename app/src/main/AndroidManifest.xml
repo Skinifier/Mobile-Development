@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Skinifier"
         tools:targetApi="31">
         <activity
+            android:name=".view.editProfile.EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.soldProduct.SoldProductActivity"
             android:exported="false" />
         <activity

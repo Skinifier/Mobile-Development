@@ -3,9 +3,11 @@ package com.capstone.skinifier.data.repository
 import androidx.lifecycle.LiveData
 import com.capstone.skinifier.data.api.ApiService
 import com.capstone.skinifier.data.api.RegisterRequest
+import com.capstone.skinifier.data.pref.ProfileData
 import com.capstone.skinifier.data.pref.UserModel
 import com.capstone.skinifier.data.pref.UserPreference
 import com.capstone.skinifier.data.response.DetailBarangResponse
+import com.capstone.skinifier.data.response.EditProfileResponse
 import com.capstone.skinifier.data.response.GetWishlistResponseItem
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
@@ -53,6 +55,19 @@ class UserRepository private constructor(
 
     suspend fun getSoldProducts(): List<SoldProductResponseItem> {
         return apiService.getSoldProduct()
+    }
+
+    suspend fun updateProfile(profileData: ProfileData): EditProfileResponse {
+        val formData = MultipartBody.Builder()
+            .setType(MultipartBody.FORM)
+            .addFormDataPart("email", profileData.email)
+            .addFormDataPart("username", profileData.username)
+            .addFormDataPart("fullname", profileData.fullname)
+            .addFormDataPart("no_hp", profileData.noHp)
+            .addFormDataPart("skin_type", profileData.skinType)
+            .build()
+
+        return apiService.updateProfile(formData)
     }
 
 

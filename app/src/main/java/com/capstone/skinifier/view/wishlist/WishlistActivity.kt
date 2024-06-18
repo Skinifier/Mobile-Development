@@ -33,6 +33,11 @@ class WishlistActivity : AppCompatActivity() {
             wishlistAdapter.submitList(items)
         }
 
+        binding.backButton.setOnClickListener {
+            @Suppress("DEPRECATION")
+            onBackPressed()
+        }
+
         wishlistViewModel.fetchWishlist()
     }
 }

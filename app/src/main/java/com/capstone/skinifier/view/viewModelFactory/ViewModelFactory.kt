@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.skinifier.data.repository.UserRepository
 import com.capstone.skinifier.di.Injection
+import com.capstone.skinifier.view.editProfile.EditProfileViewModel
 import com.capstone.skinifier.view.main.MainViewModel
 import com.capstone.skinifier.view.profile.ProfileViewModel
 import com.capstone.skinifier.view.register.SignupViewModel
@@ -30,6 +31,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(SoldProductViewModel::class.java) -> {
                 SoldProductViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(EditProfileViewModel::class.java) -> {
+                EditProfileViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

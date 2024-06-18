@@ -33,7 +33,7 @@
                 android:background="@color/white2">
 
                 <ImageView
-                    android:id="@+id/gallery"
+                    android:id="@+id/editProfile"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
                     android:contentDescription="@string/gallery"
@@ -54,8 +54,8 @@
                     app:layout_constraintHorizontal_bias="0.054"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/backgrounds/scenic"
-                    app:shapeAppearance="@style/ShapeAppearanceOverlay.Profile"/>
+                    tools:src="@tools:sample/avatars"
+                    app:shapeAppearance="@style/circleImageView"/>
 
                 <TextView
                     android:id="@+id/title"

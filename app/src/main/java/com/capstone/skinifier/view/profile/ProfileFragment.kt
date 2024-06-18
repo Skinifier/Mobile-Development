@@ -13,7 +13,10 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.capstone.skinifier.R
+import com.capstone.skinifier.view.editProfile.EditProfileActivity
 import com.capstone.skinifier.view.login.LoginActivity
 import com.capstone.skinifier.view.soldProduct.SoldProductActivity
 import com.capstone.skinifier.view.viewModelFactory.ViewModelFactory
@@ -37,9 +40,16 @@ class ProfileFragment : Fragment() {
         val email: TextView = view.findViewById(R.id.user_email)
         val noHp: TextView = view.findViewById(R.id.user_nomor)
 
+        Glide.with(this)
+            .load(R.drawable.placeholder)
+            .transform(CircleCrop())
+            .into(photo)
+
         profileViewModel.profileData.observe(viewLifecycleOwner) { profile ->
-            // Update UI elements with profile data
-            // Example: Glide.with(this).load(profile.photo).into(photo)
+            Glide.with(this)
+                .load(profile.photo)
+                .transform(CircleCrop())
+                .into(photo)
             username.text = profile.username
             skinType.text = profile.skinType
             email.text = profile.email
@@ -80,6 +90,10 @@ class ProfileFragment : Fragment() {
         }
         view?.findViewById<CardView>(R.id.cardSoldProduct)?.setOnClickListener {
             val intent = Intent(requireContext(), SoldProductActivity::class.java)
+            startActivity(intent)
+        }
+        view?.findViewById<ImageView>(R.id.editProfile)?.setOnClickListener {
+            val intent = Intent(requireContext(), EditProfileActivity::class.java)
             startActivity(intent)
         }
     }

@@ -6,24 +6,37 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/myBackgroundColor"
-    tools:context=".view.register.SignupActivity">
+    tools:context=".view.editProfile.EditProfileActivity"
+    android:background="@color/myBackgroundColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progressIndicator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="25dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:background="@null"
+            android:contentDescription="@string/backbutton"
+            android:src="@drawable/arrow_back_ios_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
+        <TextView
+            android:id="@+id/actTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="28dp"
+            android:text="Edit Profile:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardData"
@@ -31,7 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/actTitle"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
@@ -42,53 +56,87 @@
             tools:layout_editor_absoluteX="41dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white2">
 
                 <TextView
-                    android:id="@+id/Login"
+                    android:id="@+id/foto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Signup"
-                    android:textSize="25sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Photo Profile:"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/poppins_medium"
+                    />
+
+                <FrameLayout
+                    android:id="@+id/frame"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/foto">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/photo"
+                        android:scaleType="centerCrop"
+                        app:shapeAppearance="@style/circleImageView"
+                        tools:src="@tools:sample/avatars" />
+
+                    <ImageButton
+                        android:id="@+id/editButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="bottom|end"
+                        android:background="@drawable/baseline_circle_24"
+                        android:contentDescription="edit photo"
+                        android:src="@drawable/ic_edit_24"
+                        android:padding="8dp" />
+                </FrameLayout>
+
+
 
                 <TextView
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Email:"
-                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/frame"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/Login" />
+                    android:text="Email:"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="20sp"/>
 
                 <EditText
                     android:id="@+id/emailField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/custom_input"
-                    android:fontFamily="@font/poppins_medium"
                     android:hint="email"
                     android:padding="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/custom_input"
+                    app:layout_constraintTop_toBottomOf="@id/email"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/email" />
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_medium"
+                    />
 
                 <TextView
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="Username:"
@@ -114,7 +162,7 @@
                     android:id="@+id/fullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="Full name:"
@@ -140,7 +188,7 @@
                     android:id="@+id/number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="WhatsApp number:"
@@ -166,7 +214,7 @@
                     android:id="@+id/skin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/poppins_medium"
                     android:text="Skin type:"
@@ -193,67 +241,25 @@
                         android:fontFamily="@font/poppins_medium"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Password:"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dropdown_menu" />
-
-                <EditText
-                    android:id="@+id/passwordField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/custom_input"
-                    android:fontFamily="@font/poppins_medium"
-                    android:hint="password"
-                    android:inputType="textPassword"
-                    android:padding="16dp"
-                    app:endIconMode="password_toggle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/password" />
 
                 <Button
-                    android:id="@+id/signupButton"
+                    android:id="@+id/save"
                     android:layout_width="270dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="48dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/my_button"
-                    android:text="SIGNUP"
+                    android:text="SAVE"
                     android:textColor="@color/white2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/passwordField"
-                    android:fontFamily="@font/poppins_medium"
-                    style="@style/MyCustomButtonStyle"/>
-
-                <com.capstone.skinifier.view.custom.MyButtonOutline
-                    android:id="@+id/loginButton"
-                    android:layout_width="270dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="24dp"
-                    android:background="@drawable/my_button_outline"
-                    android:text="LOGIN"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/signupButton"
-                    style="@style/MyCustomButtonStyle"
-                    android:fontFamily="@font/poppins_medium"/>
+                    app:layout_constraintTop_toBottomOf="@+id/dropdown_menu"
+                    android:fontFamily="@font/poppins_medium"
+                    style="@style/MyCustomButtonStyle"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
