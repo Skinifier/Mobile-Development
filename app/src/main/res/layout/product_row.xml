@@ -20,24 +20,23 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/photo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/photo"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.054"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/backgrounds/scenic"
             app:shapeAppearance="@style/ShapeAppearanceOverlay.Avatar"/>
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/nama_brand"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="@string/judul"
+            android:text="brand name"
             android:textSize="20sp"
             android:textStyle="bold"
             android:fontFamily="@font/poppins_medium"
@@ -45,17 +44,16 @@
             app:layout_constraintTop_toBottomOf="@+id/photo" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/jenis_produk"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/deskripsi"
+            android:text="jenis product"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/primary"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/poppins_bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@id/nama_brand"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.cardview.widget.CardView>

@@ -12,10 +12,17 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/navigation_scan"
+        android:name="com.capstone.skinifier.view.scan.ScanFaceFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_scan_face" />
+
+    <fragment
         android:id="@+id/navigation_profile"
         android:name="com.capstone.skinifier.view.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+
 
 
 </navigation>

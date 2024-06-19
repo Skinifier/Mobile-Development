@@ -2,12 +2,15 @@ package com.capstone.skinifier.data.repository
 
 import com.capstone.skinifier.data.api.ApiService
 import com.capstone.skinifier.data.api.RegisterRequest
+import com.capstone.skinifier.data.pref.PredictData
 import com.capstone.skinifier.data.pref.ProfileData
 import com.capstone.skinifier.data.pref.UserModel
 import com.capstone.skinifier.data.pref.UserPreference
 import com.capstone.skinifier.data.response.DetailBarangResponse
 import com.capstone.skinifier.data.response.EditProfileResponse
+import com.capstone.skinifier.data.response.GetAllBarangResponseItem
 import com.capstone.skinifier.data.response.GetWishlistResponseItem
+import com.capstone.skinifier.data.response.PredictResponse
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
 import com.capstone.skinifier.data.response.SoldProductResponseItem
@@ -54,19 +57,9 @@ class UserRepository private constructor(
         return apiService.getSoldProduct()
     }
 
-
-//    suspend fun updateProfile(profileData: ProfileData): EditProfileResponse {
-//        val formData = MultipartBody.Builder()
-//            .setType(MultipartBody.FORM)
-//            .addFormDataPart("email", profileData.email)
-//            .addFormDataPart("username", profileData.username)
-//            .addFormDataPart("fullname", profileData.fullname)
-//            .addFormDataPart("no_hp", profileData.noHp)
-//            .addFormDataPart("skin_type", profileData.skinType)
-//            .build()
-//
-//        return apiService.updateProfile(formData)
-//    }
+    suspend fun getRecomendedBarang(): List<GetAllBarangResponseItem> {
+        return apiService.getRecomendedBarang()
+    }
 
     suspend fun updateProfile(profileData: ProfileData): EditProfileResponse {
         val formDataBuilder = MultipartBody.Builder()
@@ -84,6 +77,18 @@ class UserRepository private constructor(
 
         val formData = formDataBuilder.build()
         return apiService.updateProfile(formData)
+    }
+
+    suspend fun updateProfile(predictData: PredictData): PredictResponse {
+        val formDataBuilder = MultipartBody.Builder().setType(MultipartBody.FORM)
+
+        predictData.imagefile?.let { file ->
+            val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            formDataBuilder.addFormDataPart("imagefile", file.name, requestFile)
+        }
+
+        val formData = formDataBuilder.build()
+        return apiService.predictML(formData)
     }
 
 

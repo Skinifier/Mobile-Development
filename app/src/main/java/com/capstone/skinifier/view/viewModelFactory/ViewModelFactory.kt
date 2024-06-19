@@ -9,6 +9,7 @@ import com.capstone.skinifier.view.editProfile.EditProfileViewModel
 import com.capstone.skinifier.view.main.MainViewModel
 import com.capstone.skinifier.view.profile.ProfileViewModel
 import com.capstone.skinifier.view.register.SignupViewModel
+import com.capstone.skinifier.view.result.ResultViewModel
 import com.capstone.skinifier.view.soldProduct.SoldProductViewModel
 import com.capstone.skinifier.view.wishlist.WishlistViewModel
 
@@ -34,6 +35,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(EditProfileViewModel::class.java) -> {
                 EditProfileViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ResultViewModel::class.java) -> {
+                ResultViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

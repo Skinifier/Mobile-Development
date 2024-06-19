@@ -2,7 +2,7 @@ package com.capstone.skinifier.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class SoldProductResponseItem(
+data class GetAllBarangResponseItem(
 
 	@field:SerializedName("nama_brand")
 	val namaBrand: String? = null,

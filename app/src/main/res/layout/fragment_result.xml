@@ -4,26 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultFragment">
+    tools:context=".ResultFragment"
+    android:background="@drawable/rounded_top_corners">
 
     <TextView
-        android:id="@+id/skin"
+        android:id="@+id/your_skin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Your skin condition is"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:fontFamily="@font/poppins_medium"/>
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_bold"/>
 
     <TextView
         android:id="@+id/skin_condition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="skin condition"
-        app:layout_constraintTop_toBottomOf="@+id/skin"
+        app:layout_constraintTop_toBottomOf="@+id/your_skin"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:fontFamily="@font/poppins_bold"
         android:gravity="center"/>
 
     <TextView
@@ -32,17 +37,19 @@
         android:layout_height="wrap_content"
         android:text="Best Product for your skin"
         app:layout_constraintTop_toBottomOf="@+id/skin_condition"
-        android:fontFamily="@font/poppins_medium"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_bold"
         android:gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_product"
+        android:id="@+id/horizontal_rv_product"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/best_product"
-        tools:listitem="@layout/product_row"/>
+        tools:listitem="@layout/product_row"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

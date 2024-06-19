@@ -2,8 +2,10 @@ package com.capstone.skinifier.data.api
 
 import com.capstone.skinifier.data.response.DetailBarangResponse
 import com.capstone.skinifier.data.response.EditProfileResponse
+import com.capstone.skinifier.data.response.GetAllBarangResponseItem
 import com.capstone.skinifier.data.response.GetWishlistResponseItem
 import com.capstone.skinifier.data.response.LoginResponse
+import com.capstone.skinifier.data.response.PredictResponse
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
 import com.capstone.skinifier.data.response.SoldProductResponseItem
@@ -59,4 +61,12 @@ interface ApiService {
     suspend fun updateProfile(
         @Body formData: MultipartBody
     ): EditProfileResponse
+
+    @POST("predict")
+    suspend fun predictML(
+        @Body formData: MultipartBody
+    ): PredictResponse
+
+    @GET("barang")
+    suspend fun getRecomendedBarang(): List<GetAllBarangResponseItem>
 }
