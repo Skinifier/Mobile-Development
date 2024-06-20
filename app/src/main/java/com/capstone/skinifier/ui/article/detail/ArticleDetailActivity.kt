@@ -1,5 +1,6 @@
 package com.capstone.skinifier.ui.article.detail
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +31,12 @@ class ArticleDetailActivity : AppCompatActivity() {
             insets
         }
 
-        val data = intent.getParcelableExtra(DETAIL_ARTICLE, ArticleDataModel::class.java)
+        val data = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(DETAIL_ARTICLE, ArticleDataModel::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(DETAIL_ARTICLE) as? ArticleDataModel
+        }
 
         binding.imageButton.setOnClickListener {
             onBackPressed()

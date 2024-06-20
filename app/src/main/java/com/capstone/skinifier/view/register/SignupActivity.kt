@@ -3,12 +3,11 @@ package com.capstone.skinifier.view.register
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import com.capstone.skinifier.R
 import com.capstone.skinifier.databinding.ActivitySignupBinding
 import com.capstone.skinifier.di.ResultState
@@ -26,6 +25,7 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         // Set up the dropdown
         val skinType = resources.getStringArray(R.array.skin_type)

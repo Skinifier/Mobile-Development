@@ -15,6 +15,7 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import com.bumptech.glide.Glide
@@ -22,11 +23,11 @@ import com.capstone.skinifier.R
 import com.capstone.skinifier.data.pref.ProfileData
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.databinding.ActivityEditProfileBinding
+import com.capstone.skinifier.ui.home.NavigationActivity
 import com.capstone.skinifier.view.camera.CameraActivity
 import com.capstone.skinifier.view.camera.CameraActivity.Companion.CAMERAX_RESULT
 import com.capstone.skinifier.view.camera.reduceFileImage
 import com.capstone.skinifier.view.camera.uriToFile
-import com.capstone.skinifier.ui.home.NavigationActivity
 import com.capstone.skinifier.view.viewModelFactory.ViewModelFactory
 import java.io.File
 
@@ -60,6 +61,8 @@ class EditProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 
         // Set up the dropdown
         val skinType = resources.getStringArray(R.array.skin_type)

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.skinifier.databinding.ActivityWishlistBinding
 import com.capstone.skinifier.view.adapter.WishlistAdapter
@@ -22,6 +23,8 @@ class WishlistActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWishlistBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
 
         wishlistAdapter = WishlistAdapter { productModel ->
             val intent = Intent(this, ProductDetailActivity::class.java)
