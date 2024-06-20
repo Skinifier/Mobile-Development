@@ -1,5 +1,6 @@
 package com.capstone.skinifier.view.wishlist
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.skinifier.databinding.ActivityWishlistBinding
 import com.capstone.skinifier.view.adapter.WishlistAdapter
+import com.capstone.skinifier.view.productDetail.ProductDetailActivity
 import com.capstone.skinifier.view.viewModelFactory.ViewModelFactory
 
 class WishlistActivity : AppCompatActivity() {
@@ -21,8 +23,12 @@ class WishlistActivity : AppCompatActivity() {
         binding = ActivityWishlistBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        wishlistAdapter = WishlistAdapter { productModel ->
+            val intent = Intent(this, ProductDetailActivity::class.java)
+            intent.putExtra(ProductDetailActivity.PRODUCT_DETAIL, productModel)
+            startActivity(intent)
+        }
 
-        wishlistAdapter = WishlistAdapter()
         binding.rvItem.apply {
             layoutManager = LinearLayoutManager(this@WishlistActivity)
             adapter = wishlistAdapter
@@ -38,6 +44,11 @@ class WishlistActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+        wishlistViewModel.fetchWishlist()
+    }
+
+    override fun onResume() {
+        super.onResume()
         wishlistViewModel.fetchWishlist()
     }
 }

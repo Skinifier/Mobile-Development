@@ -17,7 +17,7 @@ class ScanFaceViewModel(private val repository: UserRepository) : ViewModel() {
     fun submitImage(predictData: PredictData) {
         viewModelScope.launch {
             try {
-                val response = repository.updateProfile(predictData)
+                val response = repository.scanFace(predictData)
                 if (response.message == "Prediction Success") {
                     _predictionResponse.value = response
                 }

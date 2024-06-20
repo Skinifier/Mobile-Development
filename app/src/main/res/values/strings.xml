@@ -38,13 +38,17 @@
     <string name="cancel">Cancel</string>
 
     <string-array name="skin_type">
-        <item>Oily Skin</item>
-        <item>Dry Skin</item>
-        <item>Normal Skin</item>
-        <item>Acne Skin</item>
+        <item>Berminyak</item>
+        <item>Kering</item>
+        <item>Normal</item>
+        <item>Jerawat</item>
     </string-array>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_product">Product</string>
+    <string name="title_profile">Profile</string>
+    <string name="favorite">fav</string>
 </resources>

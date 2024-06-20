@@ -186,6 +186,8 @@
 
 
 
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardSoldProduct"
             android:layout_width="match_parent"

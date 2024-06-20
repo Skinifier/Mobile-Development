@@ -26,7 +26,7 @@ import com.capstone.skinifier.view.camera.CameraActivity
 import com.capstone.skinifier.view.camera.CameraActivity.Companion.CAMERAX_RESULT
 import com.capstone.skinifier.view.camera.reduceFileImage
 import com.capstone.skinifier.view.camera.uriToFile
-import com.capstone.skinifier.view.home.NavigationActivity
+import com.capstone.skinifier.ui.home.NavigationActivity
 import com.capstone.skinifier.view.viewModelFactory.ViewModelFactory
 import java.io.File
 

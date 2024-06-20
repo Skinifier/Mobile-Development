@@ -11,7 +11,7 @@ data class GetWishlistResponseItem(
 	val jumlahBarang: Int? = null,
 
 	@field:SerializedName("id")
-	val id: String? = null,
+	val idWishlist: String? = null,
 
 	@field:SerializedName("id_user")
 	val idUser: String? = null

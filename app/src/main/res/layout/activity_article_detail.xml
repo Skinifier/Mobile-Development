@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/myBackgroundColor"
-    tools:context=".ArticleDetailActivity">
+    tools:context=".ui.article.detail.ArticleDetailActivity">
 
     <ImageButton
         android:id="@+id/imageButton"

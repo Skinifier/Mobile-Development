@@ -7,15 +7,22 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.capstone.skinifier.view.home.ui.home.HomeFragment"
+        android:name="com.capstone.skinifier.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
+
 
     <fragment
         android:id="@+id/navigation_scan"
         android:name="com.capstone.skinifier.view.scan.ScanFaceFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_scan_face" />
+
+    <fragment
+        android:id="@+id/navigation_product"
+        android:name="com.capstone.skinifier.ui.product.ProductFragment"
+        android:label="@string/title_product"
+        tools:layout="@layout/fragment_product" />
 
     <fragment
         android:id="@+id/navigation_profile"

@@ -6,112 +6,111 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddProductActivity"
+    tools:context=".ui.add_product.AddProductActivity"
     android:background="@color/myBackgroundColor">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="25dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
-            android:background="@null"
-            android:contentDescription="@string/backbutton"
-            android:src="@drawable/arrow_back_ios_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/actTitle"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="28dp"
-            android:text="@string/add_products"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="25dp"
+                android:layout_height="27dp"
+                android:background="@null"
+                android:contentDescription="@string/backbutton"
+                android:src="@drawable/arrow_back_ios_24"
+                android:layout_gravity="start" />
+
+            <TextView
+                android:id="@+id/actTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_products"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="start" />
+        </LinearLayout>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/actTitle"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginBottom="4dp"
             card_view:cardCornerRadius="16dp"
-            card_view:cardElevation="0dp"
-            tools:layout_editor_absoluteX="41dp">
+            card_view:cardElevation="0dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white2">
+                android:orientation="vertical"
+                android:background="@color/white2"
+                android:padding="16dp">
 
                 <TextView
                     android:id="@+id/foto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:text="@string/foto"
                     android:textSize="20sp"
-                    android:fontFamily="@font/poppins_medium"
-                    />
-                
+                    android:fontFamily="@font/poppins_medium" />
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardFfoto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/foto"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="8dp"
                     card_view:cardCornerRadius="16dp"
                     card_view:cardElevation="4dp"
                     card_view:cardMaxElevation="4dp">
 
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/png"
-                        android:scaleType="centerCrop"
-                        android:alpha="0.3"
-                        app:layout_constraintStart_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
 
-                    <ImageView
-                        android:layout_width="71dp"
-                        android:layout_height="70dp"
-                        android:alpha="0.3"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/add_24"
-                        android:layout_gravity="center"
-                        app:layout_constraintStart_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        <ImageView
+                            android:id="@+id/imageAdd"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/png"
+                            android:scaleType="centerCrop"
+                            android:alpha="0.3" />
 
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/plusImage"
+                            android:layout_width="71dp"
+                            android:layout_height="70dp"
+                            android:alpha="0.3"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_add"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/imageAdd" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/brand"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/cardFfoto"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:text="@string/brand"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="20sp"/>
@@ -120,54 +119,86 @@
                     android:id="@+id/brand_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/brand_name"
+                    android:hint="Brand Name"
                     android:padding="16dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/custom_input"
-                    app:layout_constraintTop_toBottomOf="@id/brand"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_medium"/>
+
+                <TextView
+                    android:id="@+id/skintypes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/title_product"
                     android:fontFamily="@font/poppins_medium"
-                    />
+                    android:textSize="20sp"/>
+
+                <EditText
+                    android:id="@+id/productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Product Name"
+                    android:padding="16dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/custom_input"
+                    android:fontFamily="@font/poppins_medium"/>
+
+                <TextView
+                    android:id="@+id/productTypeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Product Type"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="20sp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/product_menu"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/productTypeDropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="none"
+                        android:text="Product Type"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/brand_name"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:text="@string/product_type"
+                    android:text="Skin Type"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="20sp"/>
-                
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/dropdown_menu"
                     style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@id/type"
-                    app:layout_constraintStart_toStartOf="parent">
+                    android:layout_marginTop="8dp">
+
                     <AutoCompleteTextView
+                        android:id="@+id/skinTypeDropDown"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:inputType="none"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Sun Screen"/>
+                        android:text="Skin Type"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/dropdown_menu"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:text="@string/description"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="20sp"/>
@@ -176,28 +207,18 @@
                     android:id="@+id/description_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/brand_name"
+                    android:hint="Description"
                     android:padding="32dp"
                     android:inputType="textMultiLine"
-
                     android:layout_marginTop="8dp"
                     android:background="@drawable/custom_input"
-                    app:layout_constraintTop_toBottomOf="@id/description"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    />
-
+                    android:fontFamily="@font/poppins_medium"/>
 
                 <TextView
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/description_field"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:text="@string/price"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="20sp"/>
@@ -206,25 +227,17 @@
                     android:id="@+id/price_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/brand_name"
+                    android:hint="Price"
                     android:padding="16dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/custom_input"
-                    app:layout_constraintTop_toBottomOf="@id/price"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    />
+                    android:fontFamily="@font/poppins_medium"/>
 
                 <TextView
                     android:id="@+id/phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/price_field"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:text="@string/phone_number"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="20sp"/>
@@ -233,25 +246,17 @@
                     android:id="@+id/phone_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/brand_name"
+                    android:hint="Phone Number"
                     android:padding="16dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/custom_input"
-                    app:layout_constraintTop_toBottomOf="@id/phone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    />
+                    android:fontFamily="@font/poppins_medium"/>
 
                 <TextView
                     android:id="@+id/ingredient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/phone_field"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:text="@string/ingredients"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="20sp"/>
@@ -260,25 +265,17 @@
                     android:id="@+id/ingredient_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/brand_name"
+                    android:hint="Ingredients"
                     android:padding="16dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/custom_input"
-                    app:layout_constraintTop_toBottomOf="@id/ingredient"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    />
+                    android:fontFamily="@font/poppins_medium"/>
 
                 <TextView
                     android:id="@+id/domicile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@id/ingredient_field"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:text="@string/domicile"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="20sp"/>
@@ -287,31 +284,21 @@
                     android:id="@+id/domicile_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/custom_input"
-                    android:hint="@string/brand_name"
+                    android:hint="Domicile"
                     android:padding="16dp"
-                    android:fontFamily="@font/poppins_medium"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/domicile" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:fontFamily="@font/poppins_medium"/>
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <Button
+            android:id="@+id/uploadButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardData"
-            tools:layout_editor_absoluteX="24dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    
-
+            android:text="ADD" />
+    </LinearLayout>
 </ScrollView>

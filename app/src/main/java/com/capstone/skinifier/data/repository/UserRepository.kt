@@ -1,11 +1,14 @@
 package com.capstone.skinifier.data.repository
 
+import com.capstone.skinifier.data.api.AddWishlistRequest
 import com.capstone.skinifier.data.api.ApiService
 import com.capstone.skinifier.data.api.RegisterRequest
 import com.capstone.skinifier.data.pref.PredictData
 import com.capstone.skinifier.data.pref.ProfileData
 import com.capstone.skinifier.data.pref.UserModel
 import com.capstone.skinifier.data.pref.UserPreference
+import com.capstone.skinifier.data.response.AddWishlistResponse
+import com.capstone.skinifier.data.response.DeleteWishlistResponse
 import com.capstone.skinifier.data.response.DetailBarangResponse
 import com.capstone.skinifier.data.response.EditProfileResponse
 import com.capstone.skinifier.data.response.GetAllBarangResponseItem
@@ -49,6 +52,15 @@ class UserRepository private constructor(
         return apiService.getWishlist()
     }
 
+    suspend fun addWishlistItem(productId: String, quantity: Int): AddWishlistResponse {
+        val addWishlistRequest = AddWishlistRequest(id_barang = productId, jumlah_barang = quantity)
+        return apiService.addWishlist(addWishlistRequest)
+    }
+
+    suspend fun deleteWishlistItem(wishlistId: String): DeleteWishlistResponse {
+        return apiService.deleteWishlist(wishlistId)
+    }
+
     suspend fun getItemDetail(idBarang: String): DetailBarangResponse {
         return apiService.getItemDetail(idBarang)
     }
@@ -79,7 +91,7 @@ class UserRepository private constructor(
         return apiService.updateProfile(formData)
     }
 
-    suspend fun updateProfile(predictData: PredictData): PredictResponse {
+    suspend fun scanFace(predictData: PredictData): PredictResponse {
         val formDataBuilder = MultipartBody.Builder().setType(MultipartBody.FORM)
 
         predictData.imagefile?.let { file ->

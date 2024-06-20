@@ -26,7 +26,7 @@ data class DetailBarangResponse(
 	val harga: String? = null,
 
 	@field:SerializedName("foto")
-	val foto: String? = null,
+	val foto1: String? = null,
 
 	@field:SerializedName("updated_at")
 	val updatedAt: String? = null,
@@ -44,5 +44,8 @@ data class DetailBarangResponse(
 	val deskripsi: String? = null,
 
 	@field:SerializedName("domisili")
-	val domisili: String? = null
+	val domisili: String? = null,
+
+	@field:SerializedName("foto1")
+	val foto: String? = null
 )

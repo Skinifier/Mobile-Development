@@ -33,7 +33,7 @@
             android:name=".view.wishlist.WishlistActivity"
             android:exported="false" />
         <activity
-            android:name=".view.home.NavigationActivity"
+            android:name=".ui.home.NavigationActivity"
             android:exported="false"
             android:label="@string/title_activity_navigation"
             android:theme="@style/Theme.Skinifier" />
@@ -44,8 +44,19 @@
             android:name=".view.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".AddProductActivity"
+            android:name=".ui.add_product.AddProductActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
+        <activity
+            android:name=".ui.article.detail.ArticleDetailActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".view.productDetail.ProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.article.ArticleActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".view.main.MainActivity"
             android:exported="true"

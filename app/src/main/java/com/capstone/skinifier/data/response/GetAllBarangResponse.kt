@@ -1,7 +1,11 @@
 package com.capstone.skinifier.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+
+@Parcelize
 data class GetAllBarangResponseItem(
 
 	@field:SerializedName("nama_brand")
@@ -40,7 +44,7 @@ data class GetAllBarangResponseItem(
 	@field:SerializedName("deskripsi")
 	val deskripsi: String? = null,
 
-	@field:SerializedName("foto1")
+	@field:SerializedName("foto")
 	val foto1: String? = null,
 
 	@field:SerializedName("domisili")
@@ -49,6 +53,8 @@ data class GetAllBarangResponseItem(
 	@field:SerializedName("foto2")
 	val foto2: String? = null,
 
-	@field:SerializedName("foto")
+	@field:SerializedName("foto1")
 	val foto: String? = null
-)
+) : Parcelable
+
+

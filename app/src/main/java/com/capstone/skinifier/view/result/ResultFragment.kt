@@ -11,10 +11,10 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.capstone.skinifier.ProductDetailActivity
 import com.capstone.skinifier.R
 import com.capstone.skinifier.data.response.GetAllBarangResponseItem
 import com.capstone.skinifier.view.adapter.RecomendedProductAdapter
+import com.capstone.skinifier.view.productDetail.ProductDetailActivity
 import com.capstone.skinifier.view.viewModelFactory.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -52,7 +52,7 @@ class ResultFragment : BottomSheetDialogFragment() {
 
         adapter = RecomendedProductAdapter(emptyList()) { product ->
             val intent = Intent(context, ProductDetailActivity::class.java).apply {
-                putExtra("PRODUCT_ID", product.id)
+                putExtra(ProductDetailActivity.PRODUCT_DETAIL, product)
             }
             startActivity(intent)
         }
@@ -72,7 +72,7 @@ class ResultFragment : BottomSheetDialogFragment() {
     private fun setupRecyclerView(products: List<GetAllBarangResponseItem>) {
         adapter = RecomendedProductAdapter(products) { product ->
             val intent = Intent(context, ProductDetailActivity::class.java).apply {
-                putExtra("PRODUCT_ID", product.id)
+                putExtra(ProductDetailActivity.PRODUCT_DETAIL, product)
             }
             startActivity(intent)
         }

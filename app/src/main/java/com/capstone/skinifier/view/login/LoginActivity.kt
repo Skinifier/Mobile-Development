@@ -7,8 +7,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.skinifier.databinding.ActivityLoginBinding
 import com.capstone.skinifier.di.ResultState
-import com.capstone.skinifier.view.main.MainActivity
 import com.capstone.skinifier.view.custom.MyButtonOutline
+import com.capstone.skinifier.view.main.MainActivity
 import com.capstone.skinifier.view.register.SignupActivity
 import com.capstone.skinifier.view.viewModelFactory.AuthViewModelFactory
 
@@ -66,3 +66,4 @@ class LoginActivity : AppCompatActivity() {
     }
 
 }
+
