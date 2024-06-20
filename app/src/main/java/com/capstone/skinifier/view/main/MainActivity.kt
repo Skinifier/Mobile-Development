@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().setKeepOnScreenCondition { keepSplashScreen }
 
         setContentView(binding.root)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
 
         //check session
         mainViewModel.getSession().observe(this) { user ->
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
             keepSplashScreen = false
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
 }
