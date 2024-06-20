@@ -23,10 +23,8 @@
     </style>
 
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
-        <item name="colorSurface">@color/white2</item>
-        <item name="colorOnSurfaceVariant">@color/primaryLighter</item>
-        <item name="colorOnSecondaryContainer">@color/primary</item>
-        <item name="colorOnSurface">@color/primary</item>
+        <item name="colorSurface">@color/myBackgroundColor</item>
+        <item name="colorOnSurfaceVariant">@color/primary</item>
     </style>
 
 </resources>

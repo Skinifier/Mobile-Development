@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
@@ -35,6 +36,7 @@ class ProductDetailActivity : AppCompatActivity() {
         binding = ActivityProductDetailBinding.inflate(layoutInflater)
         onBackClickListener()
         setContentView(binding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -43,7 +45,12 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
 
-        val product = intent.getParcelableExtra(PRODUCT_DETAIL, ProductModelItem::class.java)
+        val product = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(PRODUCT_DETAIL, ProductModelItem::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(PRODUCT_DETAIL) as? ProductModelItem
+        }
 
         binding.imageButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()

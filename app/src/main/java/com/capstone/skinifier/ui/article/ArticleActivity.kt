@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.skinifier.data.model.ArticleDataModel
 import com.capstone.skinifier.databinding.ActivityArticleBinding
@@ -22,8 +21,6 @@ class ArticleActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel.fetchArticles()
-
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val rvAdapter = ArticleAdapter {
             navigateToDetailArticle(it)

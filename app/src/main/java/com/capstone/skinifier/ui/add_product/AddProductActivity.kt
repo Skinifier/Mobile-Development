@@ -9,7 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.skinifier.R
@@ -36,7 +36,6 @@ class AddProductActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityAddProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         val skinTypes = SkinType::class.sealedSubclasses.mapNotNull { it.objectInstance?.skinType }
         val productTypes = ProductType::class.sealedSubclasses.mapNotNull { it.objectInstance?.name }
         val skinTypeAdapter = ArrayAdapter(this, R.layout.dropdown_menu_popup_item, skinTypes)
