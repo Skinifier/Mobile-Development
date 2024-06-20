@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.capstone.skinifier.databinding.ActivityMainBinding
 import com.capstone.skinifier.ui.home.NavigationActivity
@@ -25,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().setKeepOnScreenCondition { keepSplashScreen }
 
         setContentView(binding.root)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         //check session
         mainViewModel.getSession().observe(this) { user ->
