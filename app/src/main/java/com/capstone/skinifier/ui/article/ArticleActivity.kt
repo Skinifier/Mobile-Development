@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.skinifier.data.model.ArticleDataModel
 import com.capstone.skinifier.databinding.ActivityArticleBinding
@@ -19,12 +20,13 @@ class ArticleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         viewModel.fetchArticles()
 
         val rvAdapter = ArticleAdapter {
             navigateToDetailArticle(it)
         }
+
 
         binding.rvArticle.apply {
             adapter = rvAdapter

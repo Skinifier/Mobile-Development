@@ -59,6 +59,7 @@ class ProductDetailActivity : AppCompatActivity() {
             with(binding) {
                 Glide.with(this@ProductDetailActivity)
                     .load(model.foto)
+                    .placeholder(R.drawable.placeholder_product)
                     .into(imageProduct)
                 itemPrice.text = "Rp" + model.harga
                 itemBrand.text = model.namaBrand

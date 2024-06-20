@@ -28,16 +28,38 @@ class MainActivity : AppCompatActivity() {
 
 
         //check session
+
         mainViewModel.getSession().observe(this) { user ->
             if (user.isLogin) {
-                startActivity(Intent(this, NavigationActivity::class.java))
-                finish()
+                mainViewModel.getProfile()
             } else {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
+                navigateToLogin()
+                keepSplashScreen = false
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+
+        mainViewModel.profileResult.observe(this) { result ->
+            result.onSuccess {
+                navigateToNavigation()
+            }.onFailure { exception ->
+                mainViewModel.logout()
+                navigateToLogin()
             }
             keepSplashScreen = false
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+    private fun navigateToLogin() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
+
+    private fun navigateToNavigation() {
+        startActivity(Intent(this, NavigationActivity::class.java))
+        finish()
     }
 }

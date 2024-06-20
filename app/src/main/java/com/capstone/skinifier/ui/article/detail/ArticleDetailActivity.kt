@@ -4,10 +4,10 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.capstone.skinifier.GlideApp
-import com.capstone.skinifier.R
 import com.capstone.skinifier.data.model.ArticleDataModel
 import com.capstone.skinifier.databinding.ActivityArticleDetailBinding
 
@@ -24,7 +24,7 @@ class ArticleDetailActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityArticleDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
