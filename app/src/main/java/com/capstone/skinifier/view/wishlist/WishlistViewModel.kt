@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.capstone.skinifier.data.repository.UserRepository
 import com.capstone.skinifier.data.response.DetailBarangResponse
 import com.capstone.skinifier.data.response.GetWishlistResponseItem
+import com.capstone.skinifier.data.response.whislist.WhislistResponseItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,7 +20,7 @@ class WishlistViewModel(private val userRepository: UserRepository) : ViewModel(
         viewModelScope.launch {
             try {
                 Log.d("WishlistViewModel", "Fetching wishlist")
-                val wishlistResponse: List<GetWishlistResponseItem> = userRepository.getWishlist()
+                val wishlistResponse: List<WhislistResponseItem> = userRepository.getWishlist()
                 Log.d("WishlistViewModel", "Wishlist response received: $wishlistResponse")
 
                 val itemList = mutableListOf<DetailBarangResponse>()

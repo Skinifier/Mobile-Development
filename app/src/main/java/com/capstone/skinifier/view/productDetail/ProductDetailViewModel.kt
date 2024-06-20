@@ -6,11 +6,12 @@ import com.capstone.skinifier.data.repository.UserRepository
 import com.capstone.skinifier.data.response.AddWishlistResponse
 import com.capstone.skinifier.data.response.DeleteWishlistResponse
 import com.capstone.skinifier.data.response.GetWishlistResponseItem
+import com.capstone.skinifier.data.response.whislist.WhislistResponseItem
 import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(private val repository: UserRepository) : ViewModel() {
 
-    fun getWishlistItems(onResult: (List<GetWishlistResponseItem>) -> Unit) {
+    fun getWishlistItems(onResult: (List<WhislistResponseItem>) -> Unit) {
         viewModelScope.launch {
             val wishlistItems = repository.getWishlist()
             onResult(wishlistItems)

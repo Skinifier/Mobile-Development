@@ -101,7 +101,7 @@ class ProductDetailActivity : AppCompatActivity() {
             wishlistItems.forEach { item ->
                 if (item.idBarang == productId) {
                     isWishlisted = true
-                    wishlistItemId = item.idWishlist
+                    wishlistItemId = item.id
                     binding.btnFavorite.setImageResource(R.drawable.ic_favfill)
                 }
             }

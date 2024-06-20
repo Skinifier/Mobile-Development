@@ -11,6 +11,7 @@ import com.capstone.skinifier.data.response.PredictResponse
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
 import com.capstone.skinifier.data.response.SoldProductResponseItem
+import com.capstone.skinifier.data.response.whislist.WhislistResponseItem
 import okhttp3.MultipartBody
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -77,7 +78,7 @@ interface ApiService {
     ): AddWishlistResponse
 
     @GET("wishlist")
-    suspend fun getWishlist(): List<GetWishlistResponseItem>
+    suspend fun getWishlist(): List<WhislistResponseItem>
 
     @DELETE("wishlist/{id_wishlist}")
     suspend fun deleteWishlist(

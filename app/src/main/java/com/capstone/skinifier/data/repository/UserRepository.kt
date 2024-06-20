@@ -17,6 +17,7 @@ import com.capstone.skinifier.data.response.PredictResponse
 import com.capstone.skinifier.data.response.ProfileResponse
 import com.capstone.skinifier.data.response.RegisterResponse
 import com.capstone.skinifier.data.response.SoldProductResponseItem
+import com.capstone.skinifier.data.response.whislist.WhislistResponseItem
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -48,7 +49,7 @@ class UserRepository private constructor(
         return apiService.getProfile()
     }
 
-    suspend fun getWishlist(): List<GetWishlistResponseItem> {
+    suspend fun getWishlist(): List<WhislistResponseItem> {
         return apiService.getWishlist()
     }
 
